@@ -84,10 +84,10 @@ const Testimonials = () => {
     // };
   }, []);
 
-  function splitArray(arr: any) {
-    const middle = Math.floor(arr.length / 2); // Find the middle index
-    const firstHalf = arr.slice(0, middle); // Create the first half
-    const secondHalf = arr.slice(middle); // Create the second half
+  function splitArray<T>(arr: T[]): T[][] {
+    const middle = Math.floor(arr.length / 2);
+    const firstHalf = arr.slice(0, middle);
+    const secondHalf = arr.slice(middle);
     return [firstHalf, secondHalf];
   }
 
@@ -95,11 +95,13 @@ const Testimonials = () => {
 
   return (
     <section className="testimonials py-20 px-6 text-white relative">
-        <div className="h-full w-[10%] absolute left-0 top-0 blur-bg-left z-10 blur-sm"></div>
-        <div className="h-full w-[10%] absolute right-0 top-0 blur-bg-right z-10 blur-xl"></div>
+      <div className="h-full w-[10%] absolute left-0 top-0 blur-bg-left z-10 blur-sm"></div>
+      <div className="h-full w-[10%] absolute right-0 top-0 blur-bg-right z-10 blur-xl"></div>
       <div className="relative app-width overflow-hidden">
         <div className="text-center">
-          <h2 className="font-bold text-3xl md:text-5xl">What They Say About Us</h2>
+          <h2 className="font-bold text-3xl md:text-5xl">
+            What They Say About Us
+          </h2>
           <p className="mb-10 text-gray-300">
             See how EmPAYment AI is transforming cash flow management for SMEs
             like yours.
