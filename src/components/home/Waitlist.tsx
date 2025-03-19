@@ -3,7 +3,7 @@ import React from "react";
 
 const Waitlist = () => {
   return (
-    <section className="wait-list pb-10 text-white min-h-screen relative">
+    <section id="join-wait-list" className="wait-list pb-10 text-white min-h-screen relative">
       <Image
         src="/svg/waitlist-l.svg"
         height={316}

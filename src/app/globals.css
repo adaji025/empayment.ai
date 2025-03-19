@@ -100,6 +100,10 @@ body {
 .resources {
   background: linear-gradient(180deg, #103A74 0%, #103A74 100%);
 }
+.resources-page {
+  background: linear-gradient(180deg, #CEECFF 14.56%, #103971 55.65%);
+
+}
 .wait-list {
   background: linear-gradient(180deg, #103A74 0%, #021631 58.5%);
 }

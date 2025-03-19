@@ -5,19 +5,13 @@ import gsap from "gsap";
 import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
-interface NavProps {
-  theme?: string;
-}
-
-const Navbar = ({ theme = "dark" }: NavProps) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const pathname = usePathname();
 
   const handleMobileButton = () => {
     setIsOpen(true);
@@ -85,6 +79,25 @@ const Navbar = ({ theme = "dark" }: NavProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const menuItems = [
+    {
+      title: "Features",
+      href: "/",
+    },
+    {
+      title: "About",
+      href: "/#about",
+    },
+    {
+      title: "Resources",
+      href: "/resources",
+    },
+    {
+      title: "Join The Waitlist",
+      href: "/#join-wait-list",
+    },
+  ];
+
   return (
     <div
       className={`${`${
@@ -110,33 +123,25 @@ const Navbar = ({ theme = "dark" }: NavProps) => {
         >
           <Link
             href="/"
-            className={`transition-all duration-100 hover:scale-95 rounded-lg hover:border hover:border-[#0C111D] p-2 ${
-              pathname === "/" && "border border-[#0C111D] "
-            }`}
+            className={`transition-all duration-100 hover:scale-95 rounded-lg hover:border hover:border-[#0C111D] p-2 `}
           >
             Features
           </Link>
           <Link
-            href="/about"
-            className={`transition-all duration-100 rounded-lg hover:scale-95 hover:border hover:border-[#0C111D] p-2 ${
-              pathname === "/about" && "border border-[#0C111D]"
-            }`}
+            href="#about"
+            className={`transition-all duration-100 rounded-lg hover:scale-95 hover:border hover:border-[#0C111D] p-2`}
           >
             About
           </Link>
           <Link
             href="/resources"
-            className={`transition-all duration-100 rounded-lg hover:scale-95 hover:border hover:border-[#0C111D] p-2 ${
-              pathname === "/resources" && "border border-[#0C111D]"
-            }`}
+            className={`transition-all duration-100 rounded-lg hover:scale-95 hover:border hover:border-[#0C111D] p-2 `}
           >
             Resources
           </Link>
           <Link
-            href="/join-the-waitlist"
-            className={`transition-all duration-100 rounded-lg hover:scale-95 hover:border hover:border-[#0C111D] p-2 ${
-              pathname === "/blog" && "border border-[#0C111D] p-2"
-            }`}
+            href="/#join-wait-list"
+            className={`transition-all duration-100 rounded-lg hover:scale-95 border border-[#0C111D] hover:border hover:border-[#0C111D] p-2 `}
           >
             Join The Waitlist
           </Link>
@@ -174,20 +179,19 @@ const Navbar = ({ theme = "dark" }: NavProps) => {
 
             {/* Menu Items */}
             <div className="flex flex-col items-center mt-10 space-y-6 text-black font-semibold text-xl w-full">
-              {["Features", "About", "Resources", "Join The Waitlist"].map(
-                (item, index) => (
-                  <Link
-                    key={item}
-                    href={`/${item.toLowerCase().replace(" ", "-")}`}
-                    className="border-b border-black pb-2 w-full text-center"
-                    ref={(el: HTMLAnchorElement | null) => {
-                      if (el) menuItemsRef.current[index] = el;
-                    }}
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
+              {menuItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={`${item.href}`}
+                  className="border-b border-black pb-2 w-full text-center"
+                  ref={(el: HTMLAnchorElement | null) => {
+                    if (el) menuItemsRef.current[index] = el;
+                  }}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.title}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
