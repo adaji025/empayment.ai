@@ -37,7 +37,7 @@ const Waitlist = () => {
           </div>
           <div className="grid gap-1 mt-4">
             <label htmlFor="name" className="text-sm font-semibold">
-              Name
+            Email
             </label>
             <input
               type="text"
@@ -46,10 +46,10 @@ const Waitlist = () => {
           </div>
           <div className="grid gap-1 mt-4">
             <label htmlFor="name" className="text-sm font-semibold">
-              Name
+            Phone Number
             </label>
             <input
-              type="text"
+              type="tel"
               className="w-full p-3 rounded-xl border border-[#FCFCFD] bg-transparent outline-none"
             />
           </div>
