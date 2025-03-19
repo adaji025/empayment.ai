@@ -1,7 +1,14 @@
+"use client"
+import Aos from "aos";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Liguidity = () => {
+  useEffect(() => {
+    Aos.init({
+      // duration: 1000
+    })
+  },[])
   return (
     <section className="liguidity pt-20 px-6">
       <div className="max-w-[1000px] mx-auto">
@@ -15,7 +22,7 @@ const Liguidity = () => {
           </div>
         </div>
 
-        <div className="border bg-1 border-[#0C111D] mt-10 rounded-[64px] sm:min-h-[416px] p-6  shadow-md flex flex-col sm:flex-row items-center space-x-4">
+        <div data-aos="fade-right" className="border bg-1 border-[#0C111D] mt-10 rounded-[64px] sm:min-h-[416px] p-6  shadow-md flex flex-col sm:flex-row items-center space-x-4">
           <div className="sm:w-[60%]">
             <h3 className="font-bold text-[32px] lg:text-[40px]">
               AI-Driven Risk & Credit Assessment
@@ -37,7 +44,7 @@ const Liguidity = () => {
         </div>
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto">
-          <div className="border bg-2 border-[#0C111D] rounded-[64px] overflow-hidden pt-6 px-6  shadow-md">
+          <div data-aos="fade-up" className="border bg-2 border-[#0C111D] rounded-[64px] overflow-hidden pt-6 px-6  shadow-md">
             <h3 className="font-bold text-[32px] lg:text-[40px]">
               Real-Time Invoice Verification
             </h3>
@@ -56,7 +63,7 @@ const Liguidity = () => {
             </div>
           </div>
 
-          <div className="border bg-3 border-[#0C111D] rounded-[64px] p-6 ">
+          <div data-aos="fade-down" className="border bg-3 border-[#0C111D] rounded-[64px] p-6 ">
             <h3 className="font-bold text-[32px] lg:text-[40px]">
               Flexible <br /> Financing
             </h3>
@@ -75,7 +82,7 @@ const Liguidity = () => {
             </div>
           </div>
         </div>
-        <div className="border bg-1 border-[#0C111D] mt-10 rounded-[64px] sm:min-h-[416px] p-6  shadow-md flex flex-col sm:flex-row items-center space-x-4">
+        <div data-aos="fade-left" className="border bg-1 border-[#0C111D] mt-10 rounded-[64px] sm:min-h-[416px] p-6  shadow-md flex flex-col sm:flex-row items-center space-x-4">
           <div className="sm:w-[60%]">
             <h3 className="font-bold text-[32px] lg:text-[40px]">
               Data Integration for Financial Insights

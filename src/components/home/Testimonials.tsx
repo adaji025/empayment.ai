@@ -61,26 +61,31 @@ const Testimonials = () => {
   const lowerCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // if (hasAnimated.current) return;
+    // hasAnimated.current = true;
+
+    const upperRef = upperCarouselRef.current;
+    const lowerRef = lowerCarouselRef.current;
+
     const animateCarousel = (ref: HTMLDivElement | null, direction: number) => {
       if (!ref) return;
-
       gsap.to(ref, {
-        xPercent: -50 * direction,
+        x: "-100%",
         duration: 10,
-        ease: "none",
+        ease: "linear",
         repeat: -1,
         modifiers: {
-          xPercent: (x) => `${parseFloat(x) % 50}`,
+          x: (x) => `${parseFloat(x) % 100}%`,
         },
       });
     };
 
-    animateCarousel(upperCarouselRef.current, 1);
-    animateCarousel(lowerCarouselRef.current, -1);
+    animateCarousel(upperRef, 1);
+    animateCarousel(lowerRef, -1);
 
     return () => {
-      gsap.killTweensOf(upperCarouselRef.current);
-      gsap.killTweensOf(lowerCarouselRef.current);
+      if (upperRef) gsap.killTweensOf(upperRef);
+      if (lowerRef) gsap.killTweensOf(lowerRef);
     };
   }, []);
 
@@ -95,11 +100,13 @@ const Testimonials = () => {
 
   return (
     <section className="testimonials py-20 px-6 text-white relative">
-        <div className="h-full w-[10%] absolute left-0 top-0 blur-bg-left z-10 blur-sm"></div>
-        <div className="h-full w-[10%] absolute right-0 top-0 blur-bg-right z-10 blur-xl"></div>
+      <div className="h-full w-[10%] absolute left-0 top-0 blur-bg-left z-10 blur-sm"></div>
+      <div className="h-full w-[10%] absolute right-0 top-0 blur-bg-right z-10 blur-xl"></div>
       <div className="relative app-width overflow-hidden">
         <div className="text-center">
-          <h2 className="font-bold text-3xl md:text-5xl">What They Say About Us</h2>
+          <h2 className="font-bold text-3xl md:text-5xl">
+            What They Say About Us
+          </h2>
           <p className="mb-10 text-gray-300">
             See how EmPAYment AI is transforming cash flow management for SMEs
             like yours.

@@ -4,6 +4,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Work Sans", serif;
   color: #0c111d;

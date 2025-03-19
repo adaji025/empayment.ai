@@ -1,5 +1,7 @@
+"use client";
+import Aos from "aos";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface IProps {
   item: {
@@ -7,20 +9,40 @@ interface IProps {
     designation: string;
     image: string;
   };
+  index: number;
 }
-const TeamCard = ({ item }: IProps) => (
-  <div className="border border-[#FCFCFD] p-4 rounded-[16px] text-white">
-    <Image
-      src={item.image}
-      alt="team"
-      width={364}
-      height={364}
-      className="w-full hover:scale-105 transition-all duration-300 cursor-pointer"
-    />
-    <div className="mt-4">{item.name}</div>
-    <div className="">{item.designation}</div>
-  </div>
-);
+const TeamCard = ({ item, index }: IProps) => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
+  return (
+    <div
+      data-aos="fade-up"
+      data-aos-delay={
+        index === 0
+          ? "400"
+          : index === 1
+          ? "500"
+          : index === 2
+          ? "600"
+          : index === 3
+          ? "700"
+          : "800"
+      }
+      className="border border-[#FCFCFD] p-4 rounded-[16px] text-white"
+    >
+      <Image
+        src={item.image}
+        alt="team"
+        width={364}
+        height={364}
+        className="w-full hover:scale-105 transition-all duration-300 cursor-pointer"
+      />
+      <div className="mt-4">{item.name}</div>
+      <div className="">{item.designation}</div>
+    </div>
+  );
+};
 const Team = () => {
   const teamData = [
     {
@@ -52,7 +74,7 @@ const Team = () => {
         </div>
         <div className="mt-20 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           {teamData.map((item, index) => (
-            <TeamCard key={index} item={item} />
+            <TeamCard key={index} item={item} index={index} />
           ))}
         </div>
       </div>
