@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description:
     "We provide financing solutions to help your business thrive. No more cash flow worries.",
   icons: {
-    icon: "/logo-icon.png",
+    icon: "/favicon.png",
   },
 };
 
